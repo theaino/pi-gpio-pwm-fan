@@ -1,0 +1,9 @@
+{
+  "curve": "pow(td, 2)",
+  "min_temp": 40,
+  "max_temp": 60,
+  "temp_cmd": "echo $((`cat /sys/class/thermal/thermal_zone0/temp`/1000))",
+  "refresh_time": 1000,
+  "pwm_freq": 25,
+  "fan_pin": 14
+}
