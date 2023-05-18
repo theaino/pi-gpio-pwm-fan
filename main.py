@@ -35,7 +35,7 @@ def main():
 
     try:
         while True:
-            temp = fetch_temp(conf.get("cmd"))
+            temp = fetch_temp(conf.get("temp_cmd"))
             speed = calc_speed(temp, conf.get("min_temp"), conf.get("max_temp"), curve)
             fan.start(speed * 100)
             time.sleep(conf.get("refresh_time") / 1000)
