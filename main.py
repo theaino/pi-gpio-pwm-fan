@@ -49,7 +49,6 @@ def main():
 
 if __name__ == "__main__":
     if not os.path.isfile(os.path.join(abs_path, "config.json")):
-        with open(os.path.join(abs_path, "default_config.json"), "r") as def_conf_file:
-            with open("config.json", "w") as conf_file:
-                conf_file.write(def_conf_file.read())
+        with open(os.path.join(abs_path, "default_config.json"), "r") as def_conf_file, open("config.json", "w") as conf_file:
+            conf_file.write(def_conf_file.read())
     main()
