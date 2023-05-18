@@ -26,6 +26,7 @@ def fetch_temp(cmd):
 
 def main():
     conf = load_conf(os.path.join(abs_path, "config.json"))
+    GPIO.setmode(GPIO.BCM)
     fan = GPIO.PWM(conf.get("fan_pin"), conf.get("pwm_freq"))
 
     def curve(td):
