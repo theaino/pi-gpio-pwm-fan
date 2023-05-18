@@ -26,8 +26,32 @@ In the repository directory, run the install.sh file.
 
 You can now delete the cloned repository.
 
-The config file is located at `/usr/bin/pi-gpio-pwm-fan/config.json`.
-
 You can also check the status by running
 
 `sudo systemctl status pi-gpio-pwm-fan`
+
+## Configure the fan
+
+The config file is located at `/usr/bin/pi-gpio-pwm-fan/config.json`.
+
+The fields are:
+
+  `curve`: It is a python function with the `td` variable which contains the temperature. If the temperature is at `min_temp`, it is 0. If it is at `max_temp`, it is 1.
+  
+  `min_temp`: Temperature when the fan starts spinning.
+  
+  `max_temp`: The maximum temperature that should be reached.
+  
+  `temp_cmd`: The shell-command for fetching the temperature in °C.
+  
+  `refresh_time`: The minimum time between each speed change.
+  
+  `pwm_freq`: The pwm-frequency of the fan.
+  
+  `fan_pin`: The gpio pin the fan is connected to.
+  
+Once you have changed the config.json file, you have to run
+
+`sudo systemctl restart pi-gpio-pwm-fan`
+
+to restart the script.
