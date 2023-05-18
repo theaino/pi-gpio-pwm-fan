@@ -14,9 +14,9 @@ def load_conf(path):
 
 
 def calc_speed(temp, min_temp, max_temp, curve):
-    if temp < min_temp:
+    if temp <= min_temp:
         return 0
-    elif temp > max_temp:
+    elif temp >= max_temp:
         return 1
     temp_range = max_temp - min_temp
     temp_delta = (temp - min_temp) / temp_range
@@ -38,9 +38,16 @@ def main():
         return eval(conf.get("curve"))
 
     try:
+        threshold_reached = False
         while True:
             temp = fetch_temp(conf.get("temp_cmd"))
+            if temp >= conf.get("min_temp") + conf.get("temp_threshold"):
+                threshold_reached = True
+            if temp < conf.get("min_temp"):
+                threshold_reached = False
             speed = calc_speed(temp, conf.get("min_temp"), conf.get("max_temp"), curve)
+            if not threshold_reached:
+                speed = 0
             fan.start(speed * 100)
             time.sleep(conf.get("refresh_time") / 1000)
     except KeyboardInterrupt:
