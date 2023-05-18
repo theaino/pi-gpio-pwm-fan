@@ -14,6 +14,10 @@ def load_conf(path):
 
 
 def calc_speed(temp, min_temp, max_temp, curve):
+    if temp < min_temp:
+        return 0
+    elif temp > max_temp:
+        return 1
     temp_range = max_temp - min_temp
     temp_delta = (temp - min_temp) / temp_range
     return max(min(curve(temp_delta), 1), 0)
