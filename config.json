@@ -1,5 +1,5 @@
 {
-  "curve": "pow(td, 2)",
+  "curve": "pow(td, 3)",
   "min_temp": 40,
   "max_temp": 60,
   "temp_cmd": "echo $((`cat /sys/class/thermal/thermal_zone0/temp`/1000))",
