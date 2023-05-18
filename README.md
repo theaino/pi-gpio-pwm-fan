@@ -42,6 +42,8 @@ The fields are:
   
   `max_temp`: The maximum temperature that should be reached.
   
+  `temp_threshold`: The temperature that has to be reached for the fan to start spinning.
+  
   `temp_cmd`: The shell-command for fetching the temperature in °C.
   
   `refresh_time`: The minimum time between each speed change.
