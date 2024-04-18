@@ -3,9 +3,6 @@ A simple python script for automatic temperate control on the raspberry pi.
 
 ## Installation
 
-Please note this was only tested on a raspberry pi 4 running the 64 bit ubuntu server image.
-This should also work on raspbian.
-
 ### 1. Clone the git repository
 
 In any directory, clone the git repository by running
